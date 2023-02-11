@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import TheInput from './TheInput.vue'
+import axios from 'axios'
 
 defineProps({
   title: {
@@ -14,6 +15,11 @@ let state = ref(false)
 function changeState() {
   this.state = !this.state
 }
+
+async function getYahooFinance() {
+  let res = await axios.get(`http://localhost:8080/API`);
+  console.log(res)
+}
 </script>
 
 <template>
@@ -23,15 +29,14 @@ function changeState() {
         <h2 style="line-height: 50px">{{ title }}</h2>
       </div>
       <div class="col-3 position-relative">
-        <div @click="changeState()" class="my-button position-absolute top-50 start-50 translate-middle" style="border: 1px solid rgb(89, 199, 194); height: 30px; width: 30px">
+        <div @click="getYahooFinance()" class="my-button position-absolute top-50 start-50 translate-middle"
+          style="border: 1px solid rgb(89, 199, 194); height: 30px; width: 30px">
           <i class="position-absolute top-50 start-50 translate-middle">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" v-if="state === false">
-              <polygon points="5 10 25 10 15 20"
-                stroke="rgb(89, 199, 194)" fill="rgb(89, 199, 194)" stroke-width="1"/>
+              <polygon points="5 10 25 10 15 20" stroke="rgb(89, 199, 194)" fill="rgb(89, 199, 194)" stroke-width="1" />
             </svg>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" v-else>
-              <polygon points="5 20 25 20 15 10"
-                stroke="rgb(89, 199, 194)" fill="rgb(89, 199, 194)" stroke-width="1"/>
+              <polygon points="5 20 25 20 15 10" stroke="rgb(89, 199, 194)" fill="rgb(89, 199, 194)" stroke-width="1" />
             </svg>
           </i>
         </div>
@@ -48,6 +53,7 @@ function changeState() {
   margin-top: 2rem;
   border: 2px solid rgb(89, 199, 194);
 }
+
 .details {
   margin-top: 1rem;
   border: 1px solid rgb(89, 199, 194);

@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 //The endpoint for the webserver ending with /url/emotion
 app.get("/API", (req, res) => {
     var dataToSend;
-    var args = ['-i 1m'];
+    var args = ['-i 1h'];
     args.unshift(yf);
     const python = spawn('python', args);
     python.stdout.on('data', function (data) {
