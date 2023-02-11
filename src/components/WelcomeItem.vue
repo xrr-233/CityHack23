@@ -1,85 +1,63 @@
+<script setup>
+import { ref } from 'vue'
+import TheInput from './TheInput.vue'
+
+defineProps({
+  title: {
+    type: String,
+    required: true
+  }
+})
+
+let state = ref(false)
+
+function changeState() {
+  this.state = !this.state
+}
+</script>
+
 <template>
-  <div class="item">
-    <i>
-      <slot name="icon"></slot>
-    </i>
-    <div class="details">
-      <h3>
-        <slot name="heading"></slot>
-      </h3>
-      <slot></slot>
+  <div class="item" style="height: 50px">
+    <div class="row">
+      <div class="offset-3 col-6 text-center">
+        <h2 style="line-height: 50px">{{ title }}</h2>
+      </div>
+      <div class="col-3 position-relative">
+        <div @click="changeState()" class="my-button position-absolute top-50 start-50 translate-middle" style="border: 1px solid rgb(89, 199, 194); height: 30px; width: 30px">
+          <i class="position-absolute top-50 start-50 translate-middle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" v-if="state === false">
+              <polygon points="5 10 25 10 15 20"
+                stroke="rgb(89, 199, 194)" fill="rgb(89, 199, 194)" stroke-width="1"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" v-else>
+              <polygon points="5 20 25 20 15 10"
+                stroke="rgb(89, 199, 194)" fill="rgb(89, 199, 194)" stroke-width="1"/>
+            </svg>
+          </i>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="details p-3" v-if="state === true">
+    <the-input></the-input>
   </div>
 </template>
 
 <style scoped>
 .item {
   margin-top: 2rem;
-  display: flex;
+  border: 2px solid rgb(89, 199, 194);
 }
-
 .details {
-  flex: 1;
-  margin-left: 1rem;
+  margin-top: 1rem;
+  border: 1px solid rgb(89, 199, 194);
 }
 
-i {
-  display: flex;
-  place-items: center;
-  place-content: center;
-  width: 32px;
-  height: 32px;
-  color: var(--color-text);
+h2 {
+  margin-bottom: 0;
 }
 
-h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin-bottom: 0.4rem;
-  color: var(--color-heading);
-}
-
-@media (min-width: 1024px) {
-  .item {
-    margin-top: 0;
-    padding: 0.4rem 0 1rem calc(var(--section-gap) / 2);
-  }
-
-  i {
-    top: calc(50% - 25px);
-    left: -26px;
-    position: absolute;
-    border: 1px solid var(--color-border);
-    background: var(--color-background);
-    border-radius: 8px;
-    width: 50px;
-    height: 50px;
-  }
-
-  .item:before {
-    content: ' ';
-    border-left: 1px solid var(--color-border);
-    position: absolute;
-    left: 0;
-    bottom: calc(50% + 25px);
-    height: calc(50% - 25px);
-  }
-
-  .item:after {
-    content: ' ';
-    border-left: 1px solid var(--color-border);
-    position: absolute;
-    left: 0;
-    top: calc(50% + 25px);
-    height: calc(50% - 25px);
-  }
-
-  .item:first-of-type:before {
-    display: none;
-  }
-
-  .item:last-of-type:after {
-    display: none;
-  }
+.my-button:hover {
+  cursor: pointer;
 }
 </style>

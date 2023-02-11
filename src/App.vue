@@ -4,20 +4,28 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <header class="container-fluid fixed-top" style="height: 50px; background-color: black">
+    <div class="row" style="width: 100%; height: 100%;">
+      <div class="col-1"  style="height: 100%;">
+        <img alt="Vue logo" class="logo mx-auto p-2" src="@/assets/logo.svg" style="height: 100%;" />
+      </div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <div class="col-11 wrapper">
+        <h2 style="line-height: 50px; color: rgb(89, 199, 194)">User-friendly Trading Platform</h2>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <!--      <nav>-->
+  <!--        <RouterLink to="/">Home</RouterLink>-->
+  <!--        <RouterLink to="/about">About</RouterLink>-->
+  <!--      </nav>-->
+
+      </div>
     </div>
   </header>
 
-  <RouterView />
+  <div class="container">
+    <RouterView />
+  </div>
+
 </template>
 
 <style scoped>
@@ -60,7 +68,7 @@ nav a:first-of-type {
   header {
     display: flex;
     place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    /*padding-right: calc(var(--section-gap) / 2);*/
   }
 
   .logo {
