@@ -1,7 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-import TheInput from './TheInput.vue'
-import axios from 'axios'
 
 defineProps({
   title: {
@@ -15,11 +13,6 @@ let state = ref(false)
 function changeState() {
   this.state = !this.state
 }
-
-async function getYahooFinance() {
-  let res = await axios.get(`http://localhost:8080/API`);
-  console.log(res)
-}
 </script>
 
 <template>
@@ -29,7 +22,7 @@ async function getYahooFinance() {
         <h2 style="line-height: 50px">{{ title }}</h2>
       </div>
       <div class="col-3 position-relative">
-        <div @click="getYahooFinance()" class="my-button position-absolute top-50 start-50 translate-middle"
+        <div @click="changeState()" class="my-button position-absolute top-50 start-50 translate-middle"
           style="border: 1px solid rgb(89, 199, 194); height: 30px; width: 30px">
           <i class="position-absolute top-50 start-50 translate-middle">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" v-if="state === false">
@@ -44,7 +37,7 @@ async function getYahooFinance() {
     </div>
   </div>
   <div class="details p-3" v-if="state === true">
-    <the-input></the-input>
+    <slot name="slot"></slot>
   </div>
 </template>
 

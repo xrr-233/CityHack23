@@ -1,7 +1,13 @@
 <script setup>
-import WelcomeItem from './WelcomeItem.vue'
+import TheItem from './TheItem.vue'
+import TheInput from './TheInput.vue'
 </script>
 
 <template>
-  <WelcomeItem title="Strategy & Backtest Period"></WelcomeItem>
+  <TheItem title="Strategy & Backtest Period">
+    <template #slot>
+      <the-input></the-input>
+    </template>
+  </TheItem>
+  <TheItem title="Backtesting Report"></TheItem>
 </template>
