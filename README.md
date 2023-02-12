@@ -50,6 +50,15 @@ Frontend Technology: Vue.js
 
 ## Server Side Setup
 
+### Install Relevant Python Package
+
+```sh
+pip install yfinance
+pip install ffn
+```
+
+### Configure Node.js Using Node Package Manager
+
 ```sh
 npm install
 ```
