@@ -42,6 +42,22 @@ app.get("/API", (req, res) => {
     });
 });
 
+//The endpoint for the webserver ending with /url/emotion
+app.get("/Algo", (req, res) => {
+    var dataToSend;
+    const python = spawn('python', ['CityhackAlgo.py']);
+    python.stdout.on('data', function (data) {
+        console.log('Pipe data from python script ...');
+        dataToSend = data.toString();
+    });
+
+    python.on('close', (code) => {
+        console.log('child process close all stdio with code ${code}');
+        // send data to browser
+        res.send(dataToSend)
+    });
+});
+
 //The endpoint for the webserver ending with /url/sentiment
 app.get("/xxx/xxx", (req, res) => {
     return res.send("url for " + req.query.url);

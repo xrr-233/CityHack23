@@ -18,7 +18,7 @@ function changeState() {
 
 async function getYahooFinance() {
   let res = await axios.get(`http://localhost:8080/API`);
-  console.log(res)
+  console.log(res.data)
 }
 </script>
 
