@@ -6,7 +6,16 @@ async function getYahooFinance() {
   emit("loadingStatus", {
     'statusText': 'loading'
   });
-  let res = await axios.get(`http://localhost:8080/Algo`);
+  const strategies = document.getElementsByName('strategy');
+  let res;
+  if(strategies[0].checked)
+    res = await axios.get(`http://localhost:8080/SMA`);
+  else if(strategies[1].checked)
+    res = await axios.get(`http://localhost:8080/OLS`);
+  else if(strategies[2].checked)
+    res = await axios.get(`http://localhost:8080/SVM`);
+  else if(strategies[3].checked)
+    res = await axios.get(`http://localhost:8080/DNN`);
   res.statusText = 'finished'
   emit("loadingStatus", res);
 }
