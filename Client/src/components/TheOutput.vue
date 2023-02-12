@@ -13,7 +13,7 @@ defineProps({
   </div>
   <div v-else-if="status.statusText === 'finished'">
     <div class="row">
-      <div class="offset-3 col-6">
+      <div class="col-6">
         <table class="table" style="color: rgb(181, 203, 198)">
           <tr>
             <th colspan="2" class="text-center">Basic Info</th>
@@ -80,81 +80,57 @@ defineProps({
             <td>Ten years: </td>
             <td class="table-data">{{ status.data[Object.keys(status.data)[1]].ten_year }}</td>
           </tr>
+        </table>
+      </div>
+      <div class="col-6">
+        <table class="table" style="color: rgb(181, 203, 198)">
           <tr>
-            <th colspan="2" class="text-center">Measures</th>
+            <th colspan="4" class="text-center">Measures</th>
           </tr>
           <tr>
-            <td>Daily sharpe: </td>
+            <td></td>
+            <td>Daily</td>
+            <td>Monthly</td>
+            <td>Yearly</td>
+          </tr>
+          <tr>
+            <td>Sharpe: </td>
             <td class="table-data">{{ status.data[Object.keys(status.data)[1]].daily_sharpe }}</td>
+            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].monthly_sharpe }}</td>
+            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].yearly_sharpe }}</td>
           </tr>
           <tr>
-            <td>Daily sortino: </td>
+            <td>Sortino: </td>
             <td class="table-data">{{ status.data[Object.keys(status.data)[1]].daily_sortino }}</td>
+            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].monthly_sortino }}</td>
+            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].yearly_sortino }}</td>
           </tr>
           <tr>
-            <td>Daily mean: </td>
+            <td>Mean: </td>
             <td class="table-data">{{ status.data[Object.keys(status.data)[1]].daily_mean }}</td>
+            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].monthly_mean }}</td>
+            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].yearly_mean }}</td>
           </tr>
           <tr>
-            <td>Daily vol: </td>
+            <td>Vol: </td>
             <td class="table-data">{{ status.data[Object.keys(status.data)[1]].daily_vol }}</td>
+            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].monthly_vol }}</td>
+            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].yearly_vol }}</td>
           </tr>
           <tr>
-            <td>Daily skew: </td>
+            <td>Skew: </td>
             <td class="table-data">{{ status.data[Object.keys(status.data)[1]].daily_skew }}</td>
+            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].monthly_skew }}</td>
+            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].yearly_skew }}</td>
           </tr>
           <tr>
             <td>Daily kurt: </td>
             <td class="table-data">{{ status.data[Object.keys(status.data)[1]].daily_kurt }}</td>
-          </tr>
-          <tr>
-            <td>Monthly sharpe: </td>
-            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].monthly_sharpe }}</td>
-          </tr>
-          <tr>
-            <td>Monthly sortino: </td>
-            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].monthly_sortino }}</td>
-          </tr>
-          <tr>
-            <td>Monthly mean: </td>
-            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].monthly_mean }}</td>
-          </tr>
-          <tr>
-            <td>Monthly vol: </td>
-            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].monthly_vol }}</td>
-          </tr>
-          <tr>
-            <td>Monthly skew: </td>
-            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].monthly_skew }}</td>
-          </tr>
-          <tr>
-            <td>Monthly kurt: </td>
             <td class="table-data">{{ status.data[Object.keys(status.data)[1]].monthly_kurt }}</td>
-          </tr>
-          <tr>
-            <td>Yearly sharpe: </td>
-            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].yearly_sharpe }}</td>
-          </tr>
-          <tr>
-            <td>Yearly sortino: </td>
-            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].yearly_sortino }}</td>
-          </tr>
-          <tr>
-            <td>Yearly mean: </td>
-            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].yearly_mean }}</td>
-          </tr>
-          <tr>
-            <td>Yearly vol: </td>
-            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].yearly_vol }}</td>
-          </tr>
-          <tr>
-            <td>Yearly skew: </td>
-            <td class="table-data">{{ status.data[Object.keys(status.data)[1]].yearly_skew }}</td>
-          </tr>
-          <tr>
-            <td>Yearly kurt: </td>
             <td class="table-data">{{ status.data[Object.keys(status.data)[1]].yearly_kurt }}</td>
           </tr>
+        </table>
+        <table class="table" style="color: rgb(181, 203, 198)">
           <tr>
             <th colspan="2" class="text-center">Others</th>
           </tr>
