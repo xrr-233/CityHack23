@@ -10,7 +10,9 @@ A User-friendly Trading Platform by L.T.C
 
 * Provide online teaching on financial literacy
 
-<img width="508" alt="WeChat Image_20230212135452" src="https://user-images.githubusercontent.com/80200340/218295414-0025f90f-acf2-407d-9c47-839d922de9e7.png">
+![WeChat Image_20230212135452](https://user-images.githubusercontent.com/80200340/218295475-1e47967c-1b79-4bc1-a1fc-f9063722648a.png)
+![WeChat Image_20230212135741](https://user-images.githubusercontent.com/80200340/218295478-4864a245-bf4a-426d-9470-6703e25e8a24.png)
+
 
 ## Recommended IDE Setup
 
