@@ -11,7 +11,7 @@ defineProps({
 let state = ref(false)
 
 function changeState() {
-  this.state = !this.state
+  state.value = !this.state
 }
 </script>
 

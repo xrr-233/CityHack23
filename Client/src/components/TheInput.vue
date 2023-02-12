@@ -1,9 +1,14 @@
 <script setup>
 import axios from "axios";
 
+const emit = defineEmits(["loadingStatus"]);
 async function getYahooFinance() {
-  let res = await axios.get(`http://localhost:8080/API`);
-  console.log(res)
+  emit("loadingStatus", {
+    'statusText': 'loading'
+  });
+  let res = await axios.get(`http://localhost:8080/Algo`);
+  res.statusText = 'finished'
+  emit("loadingStatus", res);
 }
 </script>
 
