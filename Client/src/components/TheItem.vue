@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import TheInput from './TheInput.vue'
 
 defineProps({
   title: {
@@ -12,6 +13,11 @@ let state = ref(false)
 
 function changeState() {
   state.value = !this.state
+}
+
+async function getYahooFinance() {
+  let res = await axios.get(`http://localhost:8080/Algo`);
+  console.log(res.data)
 }
 </script>
 

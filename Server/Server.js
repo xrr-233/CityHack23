@@ -1,7 +1,6 @@
 const express = require('express');
 const app = new express();
 const { spawn } = require('child_process');
-const yf = 'yahooFinance.py'
 
 
 /*This tells the server to use the client 
@@ -24,12 +23,11 @@ app.get("/", (req, res) => {
     res.render('index.html');
 });
 
-//The endpoint for the webserver ending with /url/emotion
-app.get("/API", (req, res) => {
+
+//The endpoint 
+app.get("/DNN", (req, res) => {
     var dataToSend;
-    var args = ['-i 1h'];
-    args.unshift(yf);
-    const python = spawn('python', args);
+    const python = spawn('python', ['DNN.py']);
     python.stdout.on('data', function (data) {
         console.log('Pipe data from python script ...');
         dataToSend = data.toString();
@@ -42,10 +40,10 @@ app.get("/API", (req, res) => {
     });
 });
 
-//The endpoint for the webserver ending with /url/emotion
-app.get("/Algo", (req, res) => {
+//The endpoint 
+app.get("/SMA", (req, res) => {
     var dataToSend;
-    const python = spawn('python', ['CityhackAlgo.py']);
+    const python = spawn('python', ['SMA.py']);
     python.stdout.on('data', function (data) {
         console.log('Pipe data from python script ...');
         dataToSend = data.toString();
@@ -58,9 +56,34 @@ app.get("/Algo", (req, res) => {
     });
 });
 
-//The endpoint for the webserver ending with /url/sentiment
-app.get("/xxx/xxx", (req, res) => {
-    return res.send("url for " + req.query.url);
+app.get("/OLS", (req, res) => {
+    var dataToSend;
+    const python = spawn('python', ['OLS.py']);
+    python.stdout.on('data', function (data) {
+        console.log('Pipe data from python script ...');
+        dataToSend = data.toString();
+    });
+
+    python.on('close', (code) => {
+        console.log('child process close all stdio with code ${code}');
+        // send data to browser
+        res.send(dataToSend)
+    });
+});
+
+app.get("/SVM", (req, res) => {
+    var dataToSend;
+    const python = spawn('python', ['SVM.py']);
+    python.stdout.on('data', function (data) {
+        console.log('Pipe data from python script ...');
+        dataToSend = data.toString();
+    });
+
+    python.on('close', (code) => {
+        console.log('child process close all stdio with code ${code}');
+        // send data to browser
+        res.send(dataToSend)
+    });
 });
 
 
