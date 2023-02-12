@@ -16,7 +16,7 @@ A User-friendly Trading Platform by L.T.C
 
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) 
+[VSCode](https://code.visualstudio.com/), [Node.js](https://nodejs.org/en/), [Vue.js](https://vuejs.org/)
 
 ## Team Members
 
